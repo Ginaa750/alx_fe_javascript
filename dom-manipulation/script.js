@@ -70,3 +70,19 @@ function createAddQuoteForm() {
   container.appendChild(categoryInput);
   container.appendChild(addButton);
 }
+// ✅ Required: fetchQuotesFromServer must exist in script.js
+async function fetchQuotesFromServer() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+
+    // Convert the API data into quote format
+    return data.slice(0, 10).map(post => ({
+      text: post.title,
+      category: `Server-${post.userId}`
+    }));
+  } catch (error) {
+    console.error("Failed to fetch from server:", error);
+    return [];
+  }
+}
