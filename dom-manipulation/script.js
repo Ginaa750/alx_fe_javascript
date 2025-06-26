@@ -178,7 +178,8 @@ async function syncWithServer() {
     quotes.push(...newQuotes);
     saveQuotes();
     populateCategories();
-    notifyUser("Quotes synced from server.");
+    console.log("Quotes synced with server!");
+    notifyUser("Quotes synced from server!");
   }
 }
 
