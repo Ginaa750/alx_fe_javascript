@@ -36,9 +36,11 @@ function addQuote() {
   const categoryInput = document.getElementById("newQuoteCategory").value.trim();
 
   if (textInput && categoryInput) {
-    quotes.push({ text: textInput, category: categoryInput });
+    const newQuote = { text: textInput, category: categoryInput };
+    quotes.push(newQuote);
     saveQuotes();
     populateCategories();
+    postQuoteToServer(newQuote); // ✅ Send to server
     alert("New quote added!");
     document.getElementById("newQuoteText").value = "";
     document.getElementById("newQuoteCategory").value = "";
@@ -46,6 +48,7 @@ function addQuote() {
     alert("Please enter both quote and category.");
   }
 }
+
 
 // Create the add quote form dynamically
 function createAddQuoteForm() {
